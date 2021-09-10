@@ -1,6 +1,6 @@
 package com.disaster.mode.structuraltype.adaptermode.Interface;
 
-public class Cat implements Catch{
+public class Cat implements Catch {
 
     @Override
     public void catching() {

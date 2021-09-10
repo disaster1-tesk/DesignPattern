@@ -19,17 +19,17 @@ public class Tank implements Movable {
 
     public static void main(String[] args) {
          final Tank tank = new Tank();
-        //reflection 通过二进制字节码分析类的属性和方法
+
+        /**
+         * reflection 通过二进制字节码分析类的属性和方法
+         */
         Movable m = (Movable) Proxy.newProxyInstance(/*Tank.class.getClassLoader()*/ClassLoader.getSystemClassLoader(),
                 new Class[]{Movable.class},
-                new InvocationHandler() {
-                    @Override
-                    public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
-                        System.out.println("method "+method.getName()+" start...");
-                        Object o = method.invoke(tank,args);
-                        System.out.println("method "+method.getName()+" end!");
-                        return o;
-                    }
+                (proxy, method, args1) -> {
+                    System.out.println("method "+method.getName()+" start...");
+                    Object o = method.invoke(tank, args1);
+                    System.out.println("method "+method.getName()+" end!");
+                    return o;
                 }
         );
         Movable m1 = (Movable) Proxy.newProxyInstance(Tank.class.getClassLoader(),
@@ -49,6 +49,7 @@ class LogInvocationHandler implements InvocationHandler{
     @Override
     public Object invoke(Object proxy, Method method, Object[] args) throws Throwable {
         System.out.println("method "+method.getName()+" start...");
+        assert tank == null:"tank不能为空";
         Object o = method.invoke(tank,args);
         System.out.println("method "+method.getName()+" end!");
         return o;

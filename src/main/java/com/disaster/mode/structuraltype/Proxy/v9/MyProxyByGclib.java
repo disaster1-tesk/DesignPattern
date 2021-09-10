@@ -8,7 +8,9 @@ import java.lang.reflect.Method;
 
 public class MyProxyByGclib implements MethodInterceptor {
 
-    //维护目标对象
+    /**
+     * 维护目标对象
+     */
     private Object target;
 
 
@@ -27,17 +29,6 @@ public class MyProxyByGclib implements MethodInterceptor {
         return en.create();
     }
 
-
-    public static void main(String[] args) {
-        //目标对象
-        MyServiceImpl myService = new MyServiceImpl();
-        //生成代理对象
-        MyServiceImpl myProxy = (MyServiceImpl)new MyProxyByGclib(myService).getProxyInstance();
-        //调用对象方法
-        myProxy.eat();
-        myProxy.sleep();
-    }
-
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
         System.out.println("Begin Transaction");
@@ -45,5 +36,15 @@ public class MyProxyByGclib implements MethodInterceptor {
         Object returnValue = method.invoke(target, objects);
         System.out.println("End Transaction");
         return returnValue;
+    }
+
+    public static void main(String[] args) {
+        //目标对象
+        MyServiceImpl myService = new MyServiceImpl();
+        //生成代理对象
+        MyServiceImpl myProxy = (MyServiceImpl) new MyProxyByGclib(myService).getProxyInstance();
+        //调用对象方法
+        myProxy.eat();
+        myProxy.sleep();
     }
 }

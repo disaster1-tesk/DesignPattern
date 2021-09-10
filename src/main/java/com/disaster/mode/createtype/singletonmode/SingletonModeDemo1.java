@@ -33,7 +33,7 @@ public class SingletonModeDemo1  {
         }
         return singletonModeDemo1;
     }*/
-    //DCL
+    //DCL  原子性，可见性、有序性
    /* private volatile static SingletonModeDemo1 singletonMode=null;
 
     //不加volatile可能会出现指令重排序，导致其他线程获取的这个对象是一个没有没有new完全的对象
@@ -57,14 +57,15 @@ public class SingletonModeDemo1  {
    //枚举
  public  enum Singleton{
         INSTANCE;
-        public void dosometing(){
+        public void doSomething(){
             System.out.println("枚举");
         }
+
     }
     public static void main(String[] args) {
 //        SingletonModeDemo1 mysingletonMode = SingletonModeDemo1.getMysingletonMode();
 //        SingletonModeDemo1 mysingletonMode1 = SingletonModeDemo1.getMysingletonMode();
 //        System.out.println(mysingletonMode == mysingletonMode1?"相等":"不相等");
-            Singleton.INSTANCE.dosometing();
+            Singleton.INSTANCE.doSomething();
     }
 }

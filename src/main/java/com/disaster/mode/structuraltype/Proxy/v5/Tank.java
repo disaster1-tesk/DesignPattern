@@ -2,6 +2,10 @@ package com.disaster.mode.structuraltype.Proxy.v5;
 
 import java.util.Random;
 
+/**
+ * @author Lenovo
+ */
+
 public class Tank implements Movable {
 
     @Override

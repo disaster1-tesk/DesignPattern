@@ -15,10 +15,10 @@ public class Tank implements Movable {
     }
 
     public static void main(String[] args) {
-        new Tank1().move();
+        new TankProxy().move();
     }
 }
-class Tank1 extends Tank{
+class TankProxy extends Tank{
 
     @Override
     public void move() {

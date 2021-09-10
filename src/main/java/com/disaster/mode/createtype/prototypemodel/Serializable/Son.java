@@ -27,10 +27,10 @@ public class Son implements Cloneable,Serializable {
         this.age = age;
     }
 
-    @Override
+    /*@Override
     protected Object clone() throws CloneNotSupportedException {
         Son son = null;
         son = (Son) super.clone();
         return son;
-    }
+    }*/
 }
