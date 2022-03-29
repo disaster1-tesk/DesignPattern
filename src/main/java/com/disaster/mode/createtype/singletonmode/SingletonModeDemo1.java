@@ -9,7 +9,7 @@ public class SingletonModeDemo1  {
     /*private final static SingletonModeDemo1 MysingletonMode = new SingletonModeDemo1();
     public static SingletonModeDemo1 getMysingletonMode() {
         return MysingletonMode;
-    }
+    }A
     private  static SingletonModeDemo1 MysingletonMode1 = null;
     {
         MysingletonMode1 = new SingletonModeDemo1();
